@@ -3,6 +3,7 @@ const cors = require("cors");
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
 const rateLimit = require("express-rate-limit");
+const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const dns = require("dns");
 require("dotenv").config();
@@ -21,6 +22,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors());
 app.use("/api/v1", productRoutes);
 app.use("/api/v1/auth", authRoutes);
