@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
+const vendorProductRoutes = require("./routes/vendorProductRoutes");
 const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use("/api/v1", productRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/vendor", vendorProductRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
